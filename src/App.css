@@ -1,0 +1,75 @@
+*{
+  margin: 0;
+  padding: 0;
+  color:#34403A;
+  
+}
+body{
+  background-color: #0AFF74;
+}
+h1 {
+  transition: bottom 10s ease ;
+}
+
+
+body .CajaRegistro{
+  border: 1px solid #34403A 0.2;
+  position: absolute;
+  width: 20%;
+  height:50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  background-color: #EAF4F4;
+}
+
+.CajaRegistro h1{
+
+margin-bottom: 15%;
+}
+.CajaRegistro{
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;  
+  transform: scale(.5); /*Esto significa que por defecto estara a la mitad del tamaño*/
+  transition: all ease .2s;
+  background-color: #EAF4F4;
+}
+/* .CajaRegistro:hover{
+transform:scale(1);
+} */
+h1 {
+  margin-left: 5%;
+  margin-top: 3%;
+  position: relative; /* Make sure h1 is positioned relative */
+  transition: transform 1s ease; /* Apply the transition to transform */
+}
+
+.title-app-hover{
+  position: relative; /* Ensure the element is positioned relative */
+  transform: translateY(350px); /* Use transform to move the element */
+  transition: transform 1s ease; /* Apply the transition to transform */
+}
+
+.CajaRegistro div{
+width: 75%;
+display: flex;
+flex-direction: column;
+margin-bottom:5%
+}
+.CajaRegistro input{
+border: none;
+  }
+  .CajaRegistro button{
+width: 40%;
+height: 7%;
+    background-color: #34403A;
+    color: #EAF4F4;
+    }
+    .CajaRegistro a{
+margin-top: 10%;
+      cursor: pointer;
+      }
+
