@@ -15,5 +15,9 @@
     }
 
   ],
-  "products": []
+  "products": [
+    {"nombre":"Leche",
+    "Categorias":["Congelador","Comida"]
+  }
+  ]
 }
