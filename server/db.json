@@ -6,29 +6,14 @@
       "correo": "asdf",
       "contrasena": "asdf"
     },
-    {
-      "id": "6385"
-    },
+
     {
       "id": "ed29",
       "nombre": "asdf",
       "correo": "asdf",
       "contrasena": "asdf"
-    },
-    {
-      "id": "fb77",
-      "nombre": "asdf",
-      "correo": "asdf",
-      "contrasena": "asdf"
-    },
-    {
-      "id": "5410",
-      "nombre": "fafafaf",
-      "correo": "affafaf",
-      "contrasena": "fafafafa"
-    },
-    {
-      "id": "2a28"
     }
-  ]
+
+  ],
+  "products": []
 }
