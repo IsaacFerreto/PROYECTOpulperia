@@ -18,6 +18,13 @@
   "products": [
     {"nombre":"Leche",
     "Categorias":["Congelador","Comida"]
-  }
-  ]
+  },
+  {"nombre":"Arroz",
+  "Categorias":["Congelador","Comida"]
 }
+  ]
+
+  
+}
+
+

@@ -1,3 +1,5 @@
+ 
+//  COMANDO PARA ABRIR SERVER json-server --watch db.json --port 3001
  const validateUser=(usuarios,nombre,contrasena)=>{
     return usuarios.find((user)=>nombre === user.nombre && contrasena=== user.contrasena)
 }

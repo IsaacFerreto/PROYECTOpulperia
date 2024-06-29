@@ -26,7 +26,7 @@ body .CajaRegistro{
 
 .CajaRegistro h1{
 
-margin-bottom: 15%;
+/* margin-bottom: 15%; */
 }
 .CajaRegistro{
 
@@ -69,7 +69,6 @@ height: 7%;
     color: #EAF4F4;
     }
     .CajaRegistro a{
-margin-top: 10%;
       cursor: pointer;
       }
 

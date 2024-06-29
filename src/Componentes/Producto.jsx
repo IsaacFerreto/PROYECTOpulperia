@@ -9,22 +9,28 @@ const Producto =()=>{
         const getUsuario = async()=>{
             const  dataProductos =await get("products","")
             setProductos(dataProductos)
+            console.log(dataProductos);
         }
         getUsuario()
-        console.log(productos);
+       
+
     },[])
 
 return(<>
+<div className="cuadricula">
+ {productos.map((producto) => (
 <div className="card">
   <img src="img_avatar.png" alt="Avatar" style={{ width: "100%" }} />
-  <div className="container">
+  <div className="container" key={producto.id}>
     <h4>
-      <b>John Doe</b>
+      <b>{producto.nombre}</b>
     </h4>
     <p>Architect &amp; Engineer</p>
+    <button>Agregar al carrito</button>
   </div>
 </div>
-
+))}
+</div>
 </>)
 }
 export default Producto;
