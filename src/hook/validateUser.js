@@ -3,12 +3,12 @@ let Sesion = JSON.parse(sessionStorage.getItem('iniciada')) ;
  const validateUser=(usuarios,nombre,contrasena)=>{
     const user=usuarios.find((user)=>nombre === user.nombre && contrasena=== user.contrasena);
     if (user) {
-        Sesion=[user.id,user.administrador]
+        Sesion=[user.id,user.administrador,user.nombre]
         sessionStorage.setItem('iniciada', JSON.stringify(Sesion));
 
         return true
     }else{
-        return false
+        return false 
     }
 }
 
