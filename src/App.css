@@ -24,10 +24,7 @@ body .CajaRegistro{
   background-color: #EAF4F4;
 }
 
-.CajaRegistro h1{
 
-/* margin-bottom: 15%; */
-}
 .CajaRegistro{
 
   display: flex;
@@ -88,4 +85,13 @@ height: 7%;
       /* Add some padding inside the card container */
       .container {
         padding: 2px 16px;
+      }
+
+      /*create for about us*/
+      .TextoCentrado{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
       }

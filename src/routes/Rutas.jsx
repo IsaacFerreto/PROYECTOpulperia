@@ -4,6 +4,7 @@ import {
   } from "react-router-dom";
   import Home from "../pages/Home.jsx";
   import App from "../App.jsx";
+import SobreNosotros from "../pages/SobreNosotros.jsx";
 
 const Rutas =()=>{
 
@@ -16,6 +17,10 @@ const Rutas =()=>{
           path: "/home",
           element: <Home/>,
         },
+        {
+          path: "/sobrenosotros",
+          element: <SobreNosotros/>,
+        }
       ]);
 
     return(<>

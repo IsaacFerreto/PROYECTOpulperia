@@ -1,8 +1,12 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useNavigate } from 'react-router-dom';
 const Navbar=()=>{
   let Iniciado = sessionStorage.getItem("iniciada")
   let inicia =JSON.parse(Iniciado)
+  const navigate=useNavigate()
+  
   console.log(inicia[1]);
+
     
     return(
     <>
@@ -25,7 +29,7 @@ const Navbar=()=>{
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#">
+            <a className="nav-link active" aria-current="page" href="#" onClick={navigate('/sobrenosotros')} >
             Sobre nosotros
             </a>
           </li>
