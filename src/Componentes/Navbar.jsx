@@ -4,7 +4,10 @@ const Navbar=()=>{
   let Iniciado = sessionStorage.getItem("iniciada")
   let inicia =JSON.parse(Iniciado)
   const navigate=useNavigate()
-  
+  function cerrarsesion() {
+    sessionStorage.removeItem('iniciada');
+    navigate('/')
+  }
   console.log(inicia[1]);
 
     
@@ -61,22 +64,22 @@ const Navbar=()=>{
                 </a>
               </li>
               <li>
-                <hr className="dropdown-divider" />
-              </li>
-              <li>
                 <a className="dropdown-item" href="#">
                  Confites
                 </a>
               </li>
+              <li>
+                <hr className="dropdown-divider" />
+              </li>
             </ul>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#" onClick={navigate('/agregarcontenido')}>
-              Cerrar sesion?
+            <a className="nav-link" href="#" onClick={cerrarsesion}>
+              Cerrar sesion
             </a>
           </li>
-          {    inicia[1]? <li className="nav-item">
-                     <a className="nav-link" href="#">
+          {  inicia[1]? <li className="nav-item">
+                     <a className="nav-link" href="#"onClick={navigate('/agregarcontenido')}>
                      Agregar Articulo?
                      </a>
                     </li>:<></>
