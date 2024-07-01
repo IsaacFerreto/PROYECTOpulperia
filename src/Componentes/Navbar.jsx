@@ -1,5 +1,8 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 const Navbar=()=>{
+  let Iniciado = sessionStorage.getItem("iniciada")
+  let inicia =JSON.parse(Iniciado)
+  console.log(inicia[1]);
     
     return(
     <>
@@ -68,6 +71,12 @@ const Navbar=()=>{
               Cerrar sesion?
             </a>
           </li>
+          {    inicia[1]? <li className="nav-item">
+                     <a className="nav-link" href="#">
+                     Agregar Articulo?
+                     </a>
+                    </li>:<></>
+          }
           {/* <li className="nav-item">
             <a className="nav-link disabled" aria-disabled="true">
               Disabled

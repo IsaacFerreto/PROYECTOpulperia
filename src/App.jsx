@@ -7,6 +7,7 @@ import Ingreso from './pages/Ingreso'
 function App() {
 const [pagina,setPagina]=useState(false)
 
+
 function pageState() {
   setPagina(!pagina)
 }

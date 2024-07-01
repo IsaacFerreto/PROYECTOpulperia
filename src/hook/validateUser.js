@@ -1,7 +1,15 @@
- 
+let Sesion = JSON.parse(sessionStorage.getItem('iniciada')) ;
 //  COMANDO PARA ABRIR SERVER json-server --watch db.json --port 3001
  const validateUser=(usuarios,nombre,contrasena)=>{
-    return usuarios.find((user)=>nombre === user.nombre && contrasena=== user.contrasena)
+    const user=usuarios.find((user)=>nombre === user.nombre && contrasena=== user.contrasena);
+    if (user) {
+        Sesion=[user.id,user.administrador]
+        sessionStorage.setItem('iniciada', JSON.stringify(Sesion));
+
+        return true
+    }else{
+        return false
+    }
 }
 
 const validateName=(usuarios,nombre)=>{

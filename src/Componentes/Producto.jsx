@@ -18,14 +18,15 @@ const Producto =()=>{
 
 return(<>
 <div className="cuadricula">
- {productos.map((producto) => (
-<div className="card">
+ {productos.map((producto,index) => (
+<div className="card" key={producto.id}>
   <img src="img_avatar.png" alt="Avatar" style={{ width: "100%" }} />
-  <div className="container" key={producto.id}>
+  <div className="container" key={index}>
     <h4>
       <b>{producto.nombre}</b>
     </h4>
     <p>Architect &amp; Engineer</p>
+    <input type="number"/>
     <button>Agregar al carrito</button>
   </div>
 </div>
