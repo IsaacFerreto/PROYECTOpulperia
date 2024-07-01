@@ -71,7 +71,7 @@ const Navbar=()=>{
             </ul>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="#" onClick={navigate('/agregarcontenido')}>
               Cerrar sesion?
             </a>
           </li>
