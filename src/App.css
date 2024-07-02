@@ -95,3 +95,16 @@ height: 7%;
         align-items: center;
         justify-content: center;
       }
+      .categories {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .separatioDiv {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px; /* Espacio entre los elementos */
+    }
+
