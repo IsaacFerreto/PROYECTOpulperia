@@ -7,7 +7,7 @@ const AgregarContenido=()=>{
     const [file, setFileName]=useState('')
     const [nombre,setNombre]=useState('');
     const [categorias,setcategorias]=useState([]);
-    const [cantidad,setCantidad]=useState(0);
+    const [cantidad,setCantidad]=useState(0); 
 
 function enviarObjeto() {
     //crear objeto

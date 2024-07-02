@@ -35,7 +35,7 @@ return(<>
       <b>{producto.nombre}</b>
     </h4>
     <p>Architect &amp; Engineer</p>
-    <input type="number"/>
+    {inicia[1]?<p>{producto.cantidad}</p>:<></>}
     {inicia[1]?<EditIcon/>:<></>}
     {inicia[1]?<CloseIcon />:<></>}
     <button>Agregar al carrito</button>
