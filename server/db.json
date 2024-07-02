@@ -5,40 +5,89 @@
       "nombre": "Hola",
       "correo": "asdf",
       "contrasena": "asdf",
-      "administrador":true
+      "administrador": true
     },
-
     {
       "id": "ed29",
       "nombre": "asdf",
       "correo": "asdf",
       "contrasena": "asdf",
-      "administrador":true
+      "administrador": true
     },
-
     {
       "id": "ed28",
       "nombre": "1234",
       "correo": "1234",
       "contrasena": "1234",
-      "administrador":false
+      "administrador": false
     }
-
   ],
   "products": [
-    {"id": "0",
-      "nombre":"Leche",
-    "Categorias":["Congelador","Comida"],
-    "cantidad":2
-  },
-  {"id": "1",
-    "nombre":"Arroz",
-  "Categorias":["Congelador","Comida"],
-  "cantidad":2
-}
+    {
+      "id": "0",
+      "nombre": "Leche",
+      "Categorias": [
+        "Congelador",
+        "Comida"
+      ],
+      "cantidad": 2
+    },
+    {
+      "id": "1",
+      "nombre": "Arroz",
+      "Categorias": [
+        "Congelador",
+        "Comida"
+      ],
+      "cantidad": 2
+    },
+    {
+      "id": "cd49",
+      "nombre": "frijoles",
+      "Categorias": [],
+      "cantidad": "2"
+    },
+    {
+      "id": "8597",
+      "nombre": "asdfafaf",
+      "Categorias": [],
+      "cantidad": 0,
+      "imagen": {}
+    },
+    {
+      "id": "367c",
+      "nombre": "afafafaf",
+      "Categorias": [],
+      "cantidad": 0,
+      "imagen": ""
+    },
+    {
+      "id": "990c",
+      "nombre": "agagagagag",
+      "Categorias": [],
+      "cantidad": 0,
+      "imagen": ""
+    },
+    {
+      "id": "5540",
+      "nombre": "asdsklsdsdlkajnsdafjknlkajsaf",
+      "Categorias": [],
+      "cantidad": 0,
+      "imagen": ""
+    },
+    {
+      "id": "803c",
+      "nombre": ";lasllmds;fkklasm,df",
+      "Categorias": [],
+      "cantidad": 0,
+      "imagen": ""
+    },
+    {
+      "id": "dd24",
+      "nombre": "lkjnmm,kljnmm,lkjbnm,kjkjasdfa",
+      "Categorias": [],
+      "cantidad": 0,
+      "imagen": ""
+    }
   ]
-
-  
 }
-
-
