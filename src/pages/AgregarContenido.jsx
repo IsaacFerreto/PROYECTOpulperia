@@ -9,6 +9,7 @@ const AgregarContenido=()=>{
     const [categorias,setcategorias]=useState('limpieza');
     const [cantidad,setCantidad]=useState(0); 
     const [base64, setBase64] = useState('');
+    const[precio,setPrecio]=useState('')
     
     const handleFileChange = (event) => {
         const file = event.target.files[0];
@@ -32,7 +33,8 @@ const producto={
     "nombre":nombre,
     "Categorias":categorias,
     "cantidad":cantidad,
-    "imagen":base64
+    "imagen":base64,
+    "precio":precio
 }
 post(url,producto)
 }
@@ -47,6 +49,10 @@ post(url,producto)
         <div>
         <label htmlFor="nombre">Nombre del producto</label>
         <input type="text" id="nombre" onChange={(e)=>setNombre(e.target.value)}/>
+        </div>
+        <div>
+        <label htmlFor="precio">Precio del producto en colones</label>
+        <input type="text" id="precio" onChange={(e)=>setPrecio(e.target.value)}/>
         </div>
         <div className="categories">
             <div className="separatioDiv">

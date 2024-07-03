@@ -14,6 +14,7 @@ import { deleteMethod,getByCategory ,get  } from "../hook/useFecht";
     const [cerrarModal,setCerrarModal]=useState(false)
     const[permitido,setPermitido]=useState(false)
     const [id,setID] = useState()
+    const [editando,setEditando]=useState(false)
 
     useEffect(()=>{
         console.log("ENTRA productos");  
@@ -21,7 +22,7 @@ import { deleteMethod,getByCategory ,get  } from "../hook/useFecht";
        console.log(categoria);
       
     },[categoria])
-    
+
     const getUsuario = async()=>{
       const  dataProductos =await getByCategory("products",categoria)
       setProductos(dataProductos)
@@ -49,7 +50,9 @@ import { deleteMethod,getByCategory ,get  } from "../hook/useFecht";
     setPermitido(false)
   }
 }
-
+function edit() {
+  
+}
 
 
 return(<>
@@ -67,8 +70,10 @@ return(<>
       <b>{producto.nombre}</b>
     </h4>
 
-    <p>Architect &amp; Engineer</p>
-    {inicia[1]?<p>{producto.cantidad}</p>:<></>}
+    <p>{producto.Categorias}</p>
+    <p>₡{producto.precio}</p>
+    {inicia[1]?<p>{producto.cantidad}</p>:<></> }
+    {/* {inicia[1]? {editando ? <p>{producto.cantidad}</p>:<input type="text" id="nombre" onChange={(e)=>setNombre(e.target.value)}/>} : <></>} */}
     {inicia[1]?<EditIcon/>:<></>}
     {inicia[1]?<CloseIcon className="point"
      onClick={
