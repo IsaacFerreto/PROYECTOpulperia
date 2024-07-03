@@ -1,8 +1,10 @@
+import Navbar from "../Componentes/Navbar"
 const SobreNosotros =()=>{
     let Iniciado = sessionStorage.getItem("iniciada")
     let inicia =JSON.parse(Iniciado)
 
     return(<>
+    <Navbar/>
     <div className="TextoCentrado">
     <h1>Linda Hora</h1>
     <p className="">Hola {inicia[2]}, nosotros somos una tienda local ubicada en Lagos de Lindora,<br></br> creamos esta página con el afán de hacer las compras más 

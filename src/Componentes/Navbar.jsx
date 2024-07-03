@@ -1,12 +1,18 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
-const Navbar=()=>{
+const Navbar=({confite,limpieza,comida,casa})=>{
   let Iniciado = sessionStorage.getItem("iniciada")
   let inicia =JSON.parse(Iniciado)
   const navigate=useNavigate()
   function cerrarsesion() {
     sessionStorage.removeItem('iniciada');
     navigate('/')
+  }
+
+  function moveAndChange() {
+    navigate('/home')
+    casa()
+    
   }
   console.log(inicia[1]);
 
@@ -15,7 +21,7 @@ const Navbar=()=>{
     <>
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
     <div className="container-fluid">
-      <a className="navbar-brand" href="#">
+      <a className="navbar-brand"  onClick={() =>moveAndChange()}>
         Linda Hora
       </a>
       <button
@@ -54,17 +60,17 @@ const Navbar=()=>{
             </a>
             <ul className="dropdown-menu">
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" onClick={() =>comida()}>
                   Comida
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" onClick={() =>limpieza()}>
                   Limpieza
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" onClick={() =>confite()}>
                  Confites
                 </a>
               </li>
