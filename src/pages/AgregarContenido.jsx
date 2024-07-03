@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { imgurPOST } from "../hook/imgurfecht";
 import { post } from "../hook/useFecht";
 
 const AgregarContenido=()=>{
@@ -12,18 +12,17 @@ const AgregarContenido=()=>{
 function enviarObjeto() {
     //crear objeto
     // imgurPOST(fileName)
-    
+    imgurPOST(file)
+
 const producto={
     "nombre":nombre,
     "Categorias":categorias,
     "cantidad":cantidad,
     "imagen":file
 }
-
 post(url,producto)
-
-
 }
+
 
     return(<>
     <h1>Agregar Contenido</h1><div>

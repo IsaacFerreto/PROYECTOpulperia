@@ -3,6 +3,8 @@ import { useState } from "react";
 import { get } from "../hook/useFecht";
 import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
+import { deleteMethod } from "../hook/useFecht";
+import ModalCerrar from "./ModalCerrar";
 
 
 
@@ -10,12 +12,13 @@ const Producto =()=>{
   let Iniciado = sessionStorage.getItem("iniciada")
   let inicia =JSON.parse(Iniciado)
     const [productos,setProductos]=useState([])
+    const [cerrarModal,setCerrarModal]=useState(false)
    
 
     useEffect(()=>{
         console.log("ENTRA productos");
         const getUsuario = async()=>{
-            const  dataProductos =await get("products","")
+            const  dataProductos =await get("products/","")
             setProductos(dataProductos)
             console.log(dataProductos);
         }
@@ -23,9 +26,22 @@ const Producto =()=>{
        
 
     },[])
+    function cambiarEstado() {
+      setCerrarModal(!cerrarModal)
+    }
+
+
+async function eliminarObjeto(producto) {
+  console.log('llega aca');
+ const eliminado= await deleteMethod('products',producto)
+  
+}
+
+
 
 return(<>
 <div className="cuadricula">
+ {cerrarModal?<ModalCerrar funcion={cambiarEstado}/>:<></>}
 
  {productos.map((producto,index) => (
 <div className="card" key={producto.id}>
@@ -37,7 +53,8 @@ return(<>
     <p>Architect &amp; Engineer</p>
     {inicia[1]?<p>{producto.cantidad}</p>:<></>}
     {inicia[1]?<EditIcon/>:<></>}
-    {inicia[1]?<CloseIcon />:<></>}
+    {inicia[1]?<CloseIcon className="point"
+     onClick={(e)=>eliminado(producto.id)}/>:<></>}
     <button>Agregar al carrito</button>
   </div>
 </div>

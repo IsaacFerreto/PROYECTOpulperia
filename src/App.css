@@ -107,7 +107,9 @@ height: 7%;
         align-items: center;
         margin-bottom: 10px; /* Espacio entre los elementos */
     }
-
+.point{
+  cursor: pointer;
+}
     .card{
       /* padding: 1%;
       width:90%;
