@@ -32,7 +32,7 @@ const Navbar=()=>{
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#" onClick={navigate('/sobrenosotros')} >
+            <a className="nav-link active" aria-current="page" onClick={() =>navigate('/sobrenosotros')} >
             Sobre nosotros
             </a>
           </li>
@@ -79,7 +79,7 @@ const Navbar=()=>{
             </a>
           </li>
           {  inicia[1]? <li className="nav-item">
-                     <a className="nav-link" href="#"onClick={navigate('/agregarcontenido')}>
+                     <a className="nav-link" onClick={() =>navigate('/agregarcontenido')}>
                      Agregar Articulo?
                      </a>
                     </li>:<></>
