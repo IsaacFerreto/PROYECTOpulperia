@@ -9,6 +9,8 @@ import ModalCerrar from "./ModalCerrar";
 
 
 const Producto =()=>{
+
+
   let Iniciado = sessionStorage.getItem("iniciada")
   let inicia =JSON.parse(Iniciado)
     const [productos,setProductos]=useState([])
@@ -16,24 +18,27 @@ const Producto =()=>{
    
 
     useEffect(()=>{
-        console.log("ENTRA productos");
-        const getUsuario = async()=>{
-            const  dataProductos =await get("products/","")
-            setProductos(dataProductos)
-            console.log(dataProductos);
-        }
+        console.log("ENTRA productos");  
         getUsuario()
        
 
     },[])
+    const getUsuario = async()=>{
+      const  dataProductos =await get("products","")
+      setProductos(dataProductos)
+      console.log(dataProductos);
+  }
+
     function cambiarEstado() {
       setCerrarModal(!cerrarModal)
     }
 
 
-async function eliminarObjeto(producto) {
+ function eliminarObjeto(producto) {
   console.log('llega aca');
- const eliminado= await deleteMethod('products',producto)
+  deleteMethod('products/',producto)
+  getUsuario()
+  console.log(producto);
   
 }
 
@@ -54,7 +59,8 @@ return(<>
     {inicia[1]?<p>{producto.cantidad}</p>:<></>}
     {inicia[1]?<EditIcon/>:<></>}
     {inicia[1]?<CloseIcon className="point"
-     onClick={(e)=>eliminado(producto.id)}/>:<></>}
+     onClick={
+      (e)=>eliminarObjeto(producto.id)}/>:<></>}
     <button>Agregar al carrito</button>
   </div>
 </div>

@@ -114,11 +114,16 @@ height: 7%;
       /* padding: 1%;
       width:90%;
       height: 150%; */
-      background-color: rgba(255, 255, 255, 0.8);
+    
       border: 1px solid rgba(0, 0, 0, 0.8);
       padding: 10%;
-      font-size: 30px;
+      font-size: 1em;
       text-align: center;
+      height: 500px;
+    }
+    .card img{
+      width: 10vh;
+      height: 30vh;
     }
     .card input{
 width: 100%;
@@ -127,6 +132,7 @@ width: 100%;
 justify-content: center;
   display: grid;
   grid-template-columns: auto auto auto auto;
-  background-color: #2196F3;
+  
+  
   
 }

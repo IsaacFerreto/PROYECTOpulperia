@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { imgurPOST } from "../hook/imgurfecht";
 import { post } from "../hook/useFecht";
+import Navbar from "../Componentes/Navbar";
 
 const AgregarContenido=()=>{
     const url="http://localhost:3001/products"
@@ -8,6 +9,22 @@ const AgregarContenido=()=>{
     const [nombre,setNombre]=useState('');
     const [categorias,setcategorias]=useState([]);
     const [cantidad,setCantidad]=useState(0); 
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [base64, setBase64] = useState('');
+    
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        setSelectedFile(file);
+        convertToBase64(file);
+      };
+
+      const convertToBase64 = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          setBase64(reader.result);
+        };
+      };
 
 function enviarObjeto() {
     //crear objeto
@@ -18,15 +35,16 @@ const producto={
     "nombre":nombre,
     "Categorias":categorias,
     "cantidad":cantidad,
-    "imagen":file
+    "imagen":base64
 }
 post(url,producto)
 }
 
 
     return(<>
+    <Navbar/>
     <h1>Agregar Contenido</h1><div>
-        <img src="https://i.imgur.com/Zp16B12.jpeg" alt="" />
+        <img src={base64} alt="" />
     <div>
     <form className="CajaRegistro">
         <div>
@@ -52,7 +70,7 @@ post(url,producto)
 
         <div>
         <label htmlFor="imagen">Imagen del producto</label>
-        <input type="file" id="imagen"  onChange={(e)=>setFileName(e.target.files[0])}/>
+        <input type="file" id="imagen"  onChange={handleFileChange}/>
         </div>
         <div>
         <label htmlFor="cantidad">cantidad</label>
