@@ -88,6 +88,27 @@
       "Categorias": [],
       "cantidad": 0,
       "imagen": ""
+    },
+    {
+      "id": "542c",
+      "nombre": "hola",
+      "Categorias": [],
+      "cantidad": "2",
+      "imagen": {}
+    },
+    {
+      "id": "9d82",
+      "nombre": "otra",
+      "Categorias": [],
+      "cantidad": "3",
+      "imagen": {}
+    },
+    {
+      "id": "dbc6",
+      "nombre": "asdfaf",
+      "Categorias": [],
+      "cantidad": "2",
+      "imagen": "motos.jpg"
     }
   ]
 }

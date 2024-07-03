@@ -68,5 +68,19 @@ const url =  "http://localhost:3001/"
     } 
  
 }
+async function deleteMethod(endpoint,id) {//METHOD DELETE
 
-export { get, post, put };
+  console.log("LLEGA a funcion para borrar");
+  try {
+      fetch(url+endpoint+id, {
+          method: 'DELETE',
+      }) 
+
+      console.log(`Se elimino el producto ${id}`);
+  } catch (error) {
+      alert("SYSTEM ERRROR "+Error)
+      console.log(error);
+  }
+}
+
+export { get, post, put, deleteMethod };
