@@ -9,6 +9,7 @@ import { deleteMethod,getByCategory ,put  } from "../hook/useFecht";
 
   const Producto =({categoria})=>{
   let Iniciado = sessionStorage.getItem("iniciada")
+  let carrito = JSON.parse(localStorage.getItem('items')) ;
   let inicia =JSON.parse(Iniciado)
     const [productos,setProductos]=useState([])
     const [cerrarModal,setCerrarModal]=useState(false)
@@ -17,6 +18,7 @@ import { deleteMethod,getByCategory ,put  } from "../hook/useFecht";
     const [editando,setEditando]=useState(false)
     const [precio,setPrecio]=useState()
     const [cantidad,setCantidad]=useState()
+    const[carro,SetCarro]=useState([])
 
     useEffect(()=>{
         console.log("ENTRA productos");  
@@ -30,6 +32,16 @@ import { deleteMethod,getByCategory ,put  } from "../hook/useFecht";
       setProductos(dataProductos)
       console.log(dataProductos);
   }
+
+function setCarrito(obj) {
+  let fila =[]
+  fila.push(carrito,obj.id)
+SetCarro([fila])
+  localStorage.setItem('items', JSON.stringify(carro));
+  console.log('CARRO '+carro);
+  console.log('CARRITO '+JSON.parse(carrito));
+} 
+
 
     function cambiarEstado() {
       setCerrarModal(!cerrarModal)
@@ -52,12 +64,16 @@ import { deleteMethod,getByCategory ,put  } from "../hook/useFecht";
     setPermitido(false)
   }
 }
-function edit(id) {
+function edit(producto) {
 let product={
   precio:precio,
-  cantidad:cantidad
+  cantidad:cantidad,
+  nombre:producto.nombre,
+  imagen:producto.imagen,
+  Categorias:producto.Categorias
+  
 }
-let url=`http://localhost:3001/products/${id}`
+let url=`http://localhost:3001/products/${producto.id}`
 
   put(url, product)
   .then(() => {
@@ -93,7 +109,7 @@ return(<>
         setID(producto.id)
         eliminarObjeto(producto.id)
       }}/>:<></>}
-      {editando?<button onClick={() => edit(producto.id)}>Guardar Cambios</button>:<button>Agregar al carrito</button>}
+      {editando?<button onClick={() => edit(producto)}>Guardar Cambios</button>:<button onClick={()=>setCarrito(producto)}>Agregar al carrito</button>}
       {editando?<button onClick={() => setEditando(false)}>Cancelar</button>:<></>}
   </div>
 </div>

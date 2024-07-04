@@ -83,6 +83,9 @@ h1 {
 
 /* Cards */
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s;
   border-radius: 8px;
@@ -96,6 +99,7 @@ h1 {
 }
 
 .card img {
+  margin-top: 2%;
   width: 100%;
   height: auto;
   display: block;
