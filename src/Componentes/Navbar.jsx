@@ -1,9 +1,11 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-const Navbar=({confite,limpieza,comida,casa})=>{
+const Navbar=({confite,limpieza,comida,casa,busqueda})=>{
   let Iniciado = sessionStorage.getItem("iniciada")
   let inicia =JSON.parse(Iniciado)
   const navigate=useNavigate()
+  const [palabra,setPalabra]=useState('')
   function cerrarsesion() {
     sessionStorage.removeItem('iniciada');
     navigate('/')
@@ -102,9 +104,10 @@ const Navbar=({confite,limpieza,comida,casa})=>{
             type="search"
             placeholder="Search"
             aria-label="Search"
+            onChange={(e)=>setPalabra(e.target.value)}
           />
-          <button className="btn btn-outline-success" type="submit">
-            Search
+          <button className="btn btn-outline-success" type="submit" onClick={()=>busqueda(palabra)}>
+            Buscar
           </button>
         </form>
       </div>

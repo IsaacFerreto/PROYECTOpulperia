@@ -19,10 +19,14 @@ function casa() {
     setCategoria('/')
     
 }
+function busqueda(palabra) {
+    console.log(palabra);
+    setCategoria(`?nombre=comida${palabra}`)
+}
 
     return(
         <>
-        <Navbar comida={comida} limpieza={limpieza} confite={confites} casa={casa}/>
+        <Navbar comida={comida} limpieza={limpieza} confite={confites} casa={casa} busqueda={busqueda}/>
         <Producto categoria={categoria}/>
         </>
         
