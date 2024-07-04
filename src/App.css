@@ -1,132 +1,156 @@
-*{
+/* Global Styles */
+* {
   margin: 0;
   padding: 0;
-  color:#34403A;
-  
+  color: #34403A;
+  font-family: 'Arial', sans-serif; /* Cambia la fuente aquí */
+  box-sizing: border-box;
 }
-body{
-  background-color: #0AFF74;
+
+body {
+  background-color: #F0F4F8; /* Color de fondo más suave */
+  padding: 20px;
 }
+
+/* Typography */
 h1 {
-  transition: bottom 10s ease ;
+  font-size: 2.5rem;
+  color: #2C3E50;
+  margin-bottom: 20px;
+  transition: transform 1s ease-in-out;
 }
-
-
-body .CajaRegistro{
-  border: 1px solid #34403A 0.2;
-  position: absolute;
-  width: 20%;
-  height:50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  background-color: #EAF4F4;
-}
-
-
-.CajaRegistro{
-
-  display: flex;
-  align-items: center;
-  flex-direction: column;  
-  transform: scale(.5); /*Esto significa que por defecto estara a la mitad del tamaño*/
-  transition: all ease .2s;
-  background-color: #EAF4F4;
-}
-/* .CajaRegistro:hover{
-transform:scale(1);
-} */
-h1 {
-  margin-left: 5%;
-  margin-top: 3%;
-  position: relative; /* Make sure h1 is positioned relative */
-  transition: transform 1s ease; /* Apply the transition to transform */
-}
-
 .title-app-hover{
   position: relative; /* Ensure the element is positioned relative */
   transform: translateY(350px); /* Use transform to move the element */
-  transition: transform 1s ease; /* Apply the transition to transform */
+  transition: transform 1s ease-in-out; /* Apply the transition to transform */
+  
 }
 
-.CajaRegistro div{
-width: 75%;
-display: flex;
-flex-direction: column;
-margin-bottom:5%
+/* Containers */
+.CajaRegistro {
+  border: 1px solid #34403A;
+  position: relative; /* Cambiar de absolute a relative */
+  width: 300px;
+  padding: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 20px auto; /* Centramos el div con margen automático */
+  transition: transform 1s ease-in-out;
 }
-.CajaRegistro input{
-border: none;
-  }
-  .CajaRegistro button{
-width: 40%;
-height: 7%;
-    background-color: #34403A;
-    color: #EAF4F4;
-    }
-    .CajaRegistro a{
-      cursor: pointer;
-      }
 
-      .card {
-        /* Add shadows to create the "card" effect */
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        transition: 0.3s;
 
-       
-      }
-      
-      /* On mouse-over, add a deeper shadow */
-      .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-      }
-      
-      /* Add some padding inside the card container */
-      .container {
-        padding: 2px 16px;
-      }
 
-      /*create for about us*/
-      .TextoCentrado{
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-      }
-      .categories {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .separatioDiv {
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 10px; /* Espacio entre los elementos */
-    }
-.point{
+.CajaRegistro div {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.CajaRegistro input, .CajaRegistro button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.CajaRegistro input {
+  border: 1px solid #CCCCCC;
+}
+
+.CajaRegistro button {
+  background-color: #34403A;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.CajaRegistro button:hover {
+  background-color: #2C3E50;
+}
+
+.CajaRegistro a {
+  color: #34403A;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.CajaRegistro a:hover {
+  text-decoration: underline;
+}
+
+/* Cards */
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  max-width: 300px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card .container {
+  padding: 16px;
+  text-align: center;
+}
+
+.card input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Grid Layout */
+.cuadricula {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Text Centering */
+.TextoCentrado {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Categories */
+.categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.separatioDiv {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.point {
   cursor: pointer;
 }
-    .card{
-      /* padding: 1%;
-      width:90%;
-      height: 150%; */
-      background-color: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(0, 0, 0, 0.8);
-      padding: 10%;
-      font-size: 30px;
-      text-align: center;
-    }
-    .card input{
-width: 100%;
-    }
-.cuadricula{
-justify-content: center;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  background-color: #2196F3;
-  
+.imgAgregar{
+  max-width: 300px;
+  position: absolute;
 }

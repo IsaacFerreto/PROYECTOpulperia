@@ -1,12 +1,18 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
-const Navbar=()=>{
+const Navbar=({confite,limpieza,comida,casa})=>{
   let Iniciado = sessionStorage.getItem("iniciada")
   let inicia =JSON.parse(Iniciado)
   const navigate=useNavigate()
   function cerrarsesion() {
     sessionStorage.removeItem('iniciada');
     navigate('/')
+  }
+
+  function moveAndChange() {
+    navigate('/home')
+    casa()
+    
   }
   console.log(inicia[1]);
 
@@ -15,7 +21,7 @@ const Navbar=()=>{
     <>
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
     <div className="container-fluid">
-      <a className="navbar-brand" href="#">
+      <a className="navbar-brand"  onClick={() =>moveAndChange()}>
         Linda Hora
       </a>
       <button
@@ -32,7 +38,7 @@ const Navbar=()=>{
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#" onClick={navigate('/sobrenosotros')} >
+            <a className="nav-link active" aria-current="page" onClick={() =>navigate('/sobrenosotros')} >
             Sobre nosotros
             </a>
           </li>
@@ -54,17 +60,17 @@ const Navbar=()=>{
             </a>
             <ul className="dropdown-menu">
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" onClick={() =>comida()}>
                   Comida
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" onClick={() =>limpieza()}>
                   Limpieza
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" onClick={() =>confite()}>
                  Confites
                 </a>
               </li>
@@ -79,7 +85,7 @@ const Navbar=()=>{
             </a>
           </li>
           {  inicia[1]? <li className="nav-item">
-                     <a className="nav-link" href="#"onClick={navigate('/agregarcontenido')}>
+                     <a className="nav-link" onClick={() =>navigate('/agregarcontenido')}>
                      Agregar Articulo?
                      </a>
                     </li>:<></>

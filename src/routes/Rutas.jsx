@@ -7,6 +7,7 @@ import {
 import SobreNosotros from "../pages/SobreNosotros.jsx";
 import AgregarContenido from "../pages/AgregarContenido.jsx";
 import PrivateRoute from "../private/PrivateRoute.jsx";
+// import UploadImage from "../hook/UploadImage.jsx";
 AgregarContenido
 
 const Rutas =()=>{
@@ -15,6 +16,7 @@ const Rutas =()=>{
         {path: "/",element: <App/>,},
         {path: "/home",element: <Home/>, },
         {path: "/sobrenosotros",element: <SobreNosotros/>,},
+        // {path: "/test",element: <UploadImage/>,},
         {path: "/agregarcontenido", element: <PrivateRoute Component={AgregarContenido}/>, }
       ]);
 

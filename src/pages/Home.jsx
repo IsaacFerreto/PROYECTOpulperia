@@ -1,11 +1,29 @@
+import { useState } from "react";
 import Navbar from "../Componentes/Navbar";
 import Producto from "../Componentes/Producto";
+
 const Home =()=>{
+
+
+    const [categoria,setCategoria]=useState('')
+function confites() {
+    setCategoria('?Categorias=confites')
+}
+function limpieza() {
+    setCategoria('?Categorias=limpieza')
+}
+function comida() {
+    setCategoria('?Categorias=comida')
+}
+function casa() {
+    setCategoria('/')
     
+}
+
     return(
         <>
-        <Navbar/>
-        <Producto/>
+        <Navbar comida={comida} limpieza={limpieza} confite={confites} casa={casa}/>
+        <Producto categoria={categoria}/>
         </>
         
     )

@@ -19,6 +19,25 @@ const url =  "http://localhost:3001/"
     
     } 
 };
+const getByCategory=async(endpoint="",category="")=>{
+  try {
+    const response = await fetch(url+endpoint+category, {
+      method: "GET",
+      mode: "cors",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    });
+    const data  = response.json()
+    console.log(url+endpoint+category);
+  return data
+   
+  } catch (e) {
+    console.error(e);
+  
+  }
+}
 
 
   const post = async (url, body) => {  
@@ -83,4 +102,4 @@ async function deleteMethod(endpoint,id) {//METHOD DELETE
   }
 }
 
-export { get, post, put, deleteMethod };
+export { get, post, put, deleteMethod,getByCategory };
