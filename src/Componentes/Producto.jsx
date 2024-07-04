@@ -2,7 +2,7 @@ import { useEffect} from "react";
 import { useState } from "react";
 import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
-import { deleteMethod,getByCategory ,get  } from "../hook/useFecht";
+import { deleteMethod,getByCategory ,put  } from "../hook/useFecht";
 
 
 
@@ -15,6 +15,8 @@ import { deleteMethod,getByCategory ,get  } from "../hook/useFecht";
     const[permitido,setPermitido]=useState(false)
     const [id,setID] = useState()
     const [editando,setEditando]=useState(false)
+    const [precio,setPrecio]=useState()
+    const [cantidad,setCantidad]=useState()
 
     useEffect(()=>{
         console.log("ENTRA productos");  
@@ -50,8 +52,19 @@ import { deleteMethod,getByCategory ,get  } from "../hook/useFecht";
     setPermitido(false)
   }
 }
-function edit() {
-  
+function edit(id) {
+let product={
+  precio:precio,
+  cantidad:cantidad
+}
+let url=`http://localhost:3001/products/${id}`
+
+  put(url, product)
+  .then(() => {
+    // Actualiza los productos después de la edición
+    getUsuario();
+  })
+  setEditando(false)
 }
 
 
@@ -71,17 +84,17 @@ return(<>
     </h4>
 
     <p>{producto.Categorias}</p>
-    <p>₡{producto.precio}</p>
-    {inicia[1]?<p>{producto.cantidad}</p>:<></> }
-    {/* {inicia[1]? {editando ? <p>{producto.cantidad}</p>:<input type="text" id="nombre" onChange={(e)=>setNombre(e.target.value)}/>} : <></>} */}
-    {inicia[1]?<EditIcon/>:<></>}
+    {!editando?<p>₡{producto.precio}</p>:<input type="number" id="precio"placeholder="Precio"  onChange={(e) => setPrecio(e.target.value)} />}
+    {inicia[1] ? (!editando ? <p>{producto.cantidad}</p> : <input type="number" id="cantidad" placeholder="Cantidad" onChange={(e) => setCantidad(e.target.value)} />) : <></>}
+    {inicia[1]?<EditIcon onClick={() => setEditando(true)} />:<></>}
     {inicia[1]?<CloseIcon className="point"
      onClick={
       ()=>{
         setID(producto.id)
         eliminarObjeto(producto.id)
       }}/>:<></>}
-    <button>Agregar al carrito</button>
+      {editando?<button onClick={() => edit(producto.id)}>Guardar Cambios</button>:<button>Agregar al carrito</button>}
+      {editando?<button onClick={() => setEditando(false)}>Cancelar</button>:<></>}
   </div>
 </div>
 ))}
