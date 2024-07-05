@@ -47,7 +47,7 @@ const Navbar=({confite,limpieza,comida,casa,busqueda})=>{
           
           <li className="nav-item">
             <a className="nav-link" href="#">
-            <ShoppingCartIcon/>
+            <ShoppingCartIcon onClick={()=>navigate('/carrito')}/>
             </a>
           </li>
           <li className="nav-item dropdown">

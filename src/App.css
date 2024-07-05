@@ -158,3 +158,29 @@ h1 {
   max-width: 300px;
   position: absolute;
 }
+.Separacion{
+  display: flex;
+  height: 50px;
+
+  justify-content: end;
+  background: #FFFFFF;
+}
+.Separacion p{
+  align-items: end;
+  padding-right: 100px;
+
+}
+.Separacion button{
+ width: 100px;
+  padding-bottom: 0px;
+  
+}
+.AumentarDis{
+  justify-content: center;
+  display: flex;
+}
+.AumentarDis button{
+  text-align: center;
+width: 20px;
+height: 20px;
+}

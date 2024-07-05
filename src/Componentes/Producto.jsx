@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect} from "react";
 import { useState } from "react";
 import EditIcon from '@mui/icons-material/Edit';
@@ -9,7 +10,6 @@ import { deleteMethod,getByCategory ,put  } from "../hook/useFecht";
 
   const Producto =({categoria})=>{
   let Iniciado = sessionStorage.getItem("iniciada")
-  let carrito = JSON.parse(localStorage.getItem('items')) ;
   let inicia =JSON.parse(Iniciado)
     const [productos,setProductos]=useState([])
     const [cerrarModal,setCerrarModal]=useState(false)
@@ -18,13 +18,15 @@ import { deleteMethod,getByCategory ,put  } from "../hook/useFecht";
     const [editando,setEditando]=useState(false)
     const [precio,setPrecio]=useState()
     const [cantidad,setCantidad]=useState()
-    const[carro,SetCarro]=useState([])
-
+    const [carro, setCarro] = useState(JSON.parse(localStorage.getItem('items')) || []);
+    
+    
     useEffect(()=>{
         console.log("ENTRA productos");  
         getUsuario()
        console.log(categoria);
       
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[categoria])
 
     const getUsuario = async()=>{
@@ -32,14 +34,13 @@ import { deleteMethod,getByCategory ,put  } from "../hook/useFecht";
       setProductos(dataProductos)
       console.log(dataProductos);
   }
-
+ 
+  
 function setCarrito(obj) {
-  let fila =[]
-  fila.push(carrito,obj.id)
-SetCarro([fila])
-  localStorage.setItem('items', JSON.stringify(carro));
-  console.log('CARRO '+carro);
-  console.log('CARRITO '+JSON.parse(carrito));
+  const updatedCarro = [...carro, obj.id];
+  setCarro(updatedCarro); 
+  localStorage.setItem('items', JSON.stringify(updatedCarro)); 
+  console.log('CARRO', updatedCarro); 
 } 
 
 

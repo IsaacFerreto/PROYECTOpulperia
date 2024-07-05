@@ -76,7 +76,7 @@ post(url,producto)
         <label htmlFor="cantidad">cantidad</label>
         <input type="number" id="cantidad" onChange={(e)=>setCantidad(e.target.value)}/>
         </div>
-        <button onClick={enviarObjeto}>Subir</button>
+        <button type="submit" onClick={enviarObjeto}>Subir</button>
     </form>
     </div>
     </div>
