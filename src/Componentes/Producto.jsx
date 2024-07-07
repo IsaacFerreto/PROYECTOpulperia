@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect} from "react";
 import { useState } from "react";
 import EditIcon from '@mui/icons-material/Edit';
@@ -17,12 +18,15 @@ import { deleteMethod,getByCategory ,put  } from "../hook/useFecht";
     const [editando,setEditando]=useState(false)
     const [precio,setPrecio]=useState()
     const [cantidad,setCantidad]=useState()
-
+    const [carro, setCarro] = useState(JSON.parse(localStorage.getItem('items')) || []);
+    
+    
     useEffect(()=>{
         console.log("ENTRA productos");  
         getUsuario()
        console.log(categoria);
       
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[categoria])
 
     const getUsuario = async()=>{
@@ -30,6 +34,15 @@ import { deleteMethod,getByCategory ,put  } from "../hook/useFecht";
       setProductos(dataProductos)
       console.log(dataProductos);
   }
+ 
+  
+function setCarrito(obj) {
+  const updatedCarro = [...carro, obj.id];
+  setCarro(updatedCarro); 
+  localStorage.setItem('items', JSON.stringify(updatedCarro)); 
+  console.log('CARRO', updatedCarro); 
+} 
+
 
     function cambiarEstado() {
       setCerrarModal(!cerrarModal)
@@ -52,12 +65,16 @@ import { deleteMethod,getByCategory ,put  } from "../hook/useFecht";
     setPermitido(false)
   }
 }
-function edit(id) {
+function edit(producto) {
 let product={
   precio:precio,
-  cantidad:cantidad
+  cantidad:cantidad,
+  nombre:producto.nombre,
+  imagen:producto.imagen,
+  Categorias:producto.Categorias
+  
 }
-let url=`http://localhost:3001/products/${id}`
+let url=`http://localhost:3001/products/${producto.id}`
 
   put(url, product)
   .then(() => {
@@ -93,7 +110,7 @@ return(<>
         setID(producto.id)
         eliminarObjeto(producto.id)
       }}/>:<></>}
-      {editando?<button onClick={() => edit(producto.id)}>Guardar Cambios</button>:<button>Agregar al carrito</button>}
+      {editando?<button onClick={() => edit(producto)}>Guardar Cambios</button>:<button onClick={()=>setCarrito(producto)}>Agregar al carrito</button>}
       {editando?<button onClick={() => setEditando(false)}>Cancelar</button>:<></>}
   </div>
 </div>

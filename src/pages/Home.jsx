@@ -21,7 +21,8 @@ function casa() {
 }
 function busqueda(palabra) {
     console.log(palabra);
-    setCategoria(`?nombre=comida${palabra}`)
+    setCategoria(`?nombre=${palabra}`)
+    console.log(categoria);
 }
 
     return(

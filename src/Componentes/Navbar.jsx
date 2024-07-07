@@ -47,7 +47,7 @@ const Navbar=({confite,limpieza,comida,casa,busqueda})=>{
           
           <li className="nav-item">
             <a className="nav-link" href="#">
-            <ShoppingCartIcon/>
+            <ShoppingCartIcon onClick={()=>navigate('/carrito')}/>
             </a>
           </li>
           <li className="nav-item dropdown">
@@ -106,7 +106,10 @@ const Navbar=({confite,limpieza,comida,casa,busqueda})=>{
             aria-label="Search"
             onChange={(e)=>setPalabra(e.target.value)}
           />
-          <button className="btn btn-outline-success" type="submit" onClick={()=>busqueda(palabra)}>
+          <button className="btn btn-outline-success" type="submit" onClick={(e)=>{
+            e.preventDefault()
+            busqueda(palabra)
+          }}>
             Buscar
           </button>
         </form>

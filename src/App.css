@@ -83,6 +83,9 @@ h1 {
 
 /* Cards */
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s;
   border-radius: 8px;
@@ -96,6 +99,7 @@ h1 {
 }
 
 .card img {
+  margin-top: 2%;
   width: 100%;
   height: auto;
   display: block;
@@ -153,4 +157,30 @@ h1 {
 .imgAgregar{
   max-width: 300px;
   position: absolute;
+}
+.Separacion{
+  display: flex;
+  height: 50px;
+
+  justify-content: end;
+  background: #FFFFFF;
+}
+.Separacion p{
+  align-items: end;
+  padding-right: 100px;
+
+}
+.Separacion button{
+ width: 100px;
+  padding-bottom: 0px;
+  
+}
+.AumentarDis{
+  justify-content: center;
+  display: flex;
+}
+.AumentarDis button{
+  text-align: center;
+width: 20px;
+height: 20px;
 }
