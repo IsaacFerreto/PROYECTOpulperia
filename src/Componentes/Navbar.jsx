@@ -9,6 +9,7 @@ const Navbar=({confite,limpieza,comida,casa,busqueda})=>{
   const [palabra,setPalabra]=useState('')
   function cerrarsesion() {
     sessionStorage.removeItem('iniciada');
+    localStorage.removeItem('items');
     navigate('/')
   }
 

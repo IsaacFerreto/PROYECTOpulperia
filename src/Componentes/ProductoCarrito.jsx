@@ -5,6 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 const arregloEliminar = JSON.parse(localStorage.getItem("items"))
 
 const ProductoCarrito = ()=>{
+    const [carro, setCarro] = useState(JSON.parse(localStorage.getItem("items")) || []);
     const [cantidad,setCantidad]=useState({})
 const [productosCarritos,setProductosCarritos]=useState([])
 let conteo =0;
@@ -12,7 +13,7 @@ let conteo =0;
 useEffect(()=>{
     getCarrito()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-},[cantidad])
+},[carro])
 
 const getCarrito = async()=>{
     let listacarrito=[]
@@ -29,14 +30,12 @@ const getCarrito = async()=>{
     console.log(productosCarritos);
 
 }
-let casa =arregloEliminar
+
+
 function  eliminar(id) {
-   console.log(casa);
-    let indice = arregloEliminar.indexOf(id); // obtenemos el indice
-    console.log(indice);
-    arregloEliminar.splice(indice, 1); 
-console.log(arregloEliminar+' arregloEliminar');
-    localStorage.setItem('items', JSON.stringify(arregloEliminar)); 
+    const newCarro = carro.filter(itemId => itemId !== id);
+    setCarro(newCarro);
+    localStorage.setItem('items', JSON.stringify(newCarro));
     getCarrito()
 }
 
@@ -47,13 +46,7 @@ const handleQuantityChange = (productId, change) => {
     }));
   };
 
-function aumentar() {
-    
-    setCantidad(cantidad+conteo++)
-}
-function disminuir() {
-    setCantidad(cantidad+conteo--)
-}
+ 
 
 
     return(
