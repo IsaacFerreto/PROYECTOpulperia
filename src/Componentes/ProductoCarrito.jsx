@@ -5,7 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 const arregloEliminar = JSON.parse(localStorage.getItem("items"))
 
 const ProductoCarrito = ()=>{
-    const [cantidad,setCantidad]=useState(0)
+    const [cantidad,setCantidad]=useState({})
 const [productosCarritos,setProductosCarritos]=useState([])
 let conteo =0;
 
@@ -39,6 +39,13 @@ console.log(arregloEliminar+' arregloEliminar');
     localStorage.setItem('items', JSON.stringify(arregloEliminar)); 
     getCarrito()
 }
+
+const handleQuantityChange = (productId, change) => {
+    setCantidad((prevCantidades) => ({
+      ...prevCantidades,
+      [productId]:  Math.max((prevCantidades[productId] || 0) + change, 0)
+    }));
+  };
 
 function aumentar() {
     
@@ -74,9 +81,9 @@ function disminuir() {
     <p>{producto.Categorias}</p>
     <p>₡{producto.precio}</p>
     <div className="AumentarDis">
-        <button onClick={disminuir}>-</button>
-    <p>{cantidad}</p>
-        <button onClick={aumentar}>+</button>
+        <button onClick={()=>handleQuantityChange(producto.id,-1)}>-</button>
+    <p >{cantidad[producto.id] || 0}</p>
+        <button onClick={()=>handleQuantityChange(producto.id,1)}>+</button>
     </div>
     
    
