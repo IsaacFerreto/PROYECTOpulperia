@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

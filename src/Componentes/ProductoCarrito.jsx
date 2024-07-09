@@ -16,6 +16,7 @@ useEffect(()=>{
 
 const getCarrito = async()=>{
     let listacarrito=[]
+    console.log(arregloEliminar);
     const productosGuardados = JSON.parse(localStorage.getItem("items"))
     for (let i = 0; i < productosGuardados.length; i++) {
         const getPorID = await get("products",productosGuardados[i])
@@ -28,9 +29,11 @@ const getCarrito = async()=>{
     console.log(productosCarritos);
 
 }
+let casa =arregloEliminar
 function  eliminar(id) {
-   
+   console.log(casa);
     let indice = arregloEliminar.indexOf(id); // obtenemos el indice
+    console.log(indice);
     arregloEliminar.splice(indice, 1); 
 console.log(arregloEliminar+' arregloEliminar');
     localStorage.setItem('items', JSON.stringify(arregloEliminar)); 
