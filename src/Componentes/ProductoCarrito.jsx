@@ -7,9 +7,10 @@ const arregloEliminar = JSON.parse(localStorage.getItem("items"))
 const ProductoCarrito = ()=>{
     const [carro, setCarro] = useState(JSON.parse(localStorage.getItem("items")) || []);
     const [cantidad,setCantidad]=useState({})
-const [productosCarritos,setProductosCarritos]=useState([])
-let conteo =0;
-
+    const [productosCarritos,setProductosCarritos]=useState([])
+    const [precioP,setPrecioP]=useState(0)
+    const [precioPT,setPrecioPT]=useState(0)
+    const [cantidadPT,setCantidadPT]=useState(0)
 useEffect(()=>{
     getCarrito()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,21 +40,48 @@ function  eliminar(id) {
     getCarrito()
 }
 
-const handleQuantityChange = (productId, change) => {
-    setCantidad((prevCantidades) => ({
-      ...prevCantidades,
-      [productId]:  Math.max((prevCantidades[productId] || 0) + change, 0)
-    }));
+
+function mayor(product, change) {
+
+}
+
+const handleQuantityChange = (product, change) => { 
+
+   let nuevaCantidad= (cantidad[product.id]||0)+change
+   console.log('ENTRA EN if HADLE QUANTITY');
+   console.log(nuevaCantidad);
+   console.log(product.cantidad);
+   console.log('--------------------------');
+
+       if (nuevaCantidad <= product.cantidad && nuevaCantidad >= 0) {
+
+        
+        setCantidad((prevCantidades) => ({
+            ...prevCantidades,
+            [product.id]: nuevaCantidad,
+    
+          }));
+          setCantidadPT()
+}
+   
   };
 
- 
+  const calcularTotal = () => {
+    return productosCarritos
+      .map(producto => (cantidad[producto.id] || 0) * producto.precio)
+      .reduce((total, precio) => total + precio, 0);
+  };
 
 
     return(
         <>
         <div className="Separacion">
-            <p>total:</p>
-            <button>Apartar!</button>
+            <p>Total: ₡{calcularTotal()}</p>
+            <button
+            onClick={()=>{
+                console.log(precioPT);
+            }}
+            >Apartar!</button>
         </div>
 
 
@@ -72,14 +100,13 @@ const handleQuantityChange = (productId, change) => {
     </h4>
 
     <p>{producto.Categorias}</p>
-    <p>₡{producto.precio}</p>
+    <p >₡{producto.precio}</p>
     <div className="AumentarDis">
-        <button onClick={()=>handleQuantityChange(producto.id,-1)}>-</button>
-    <p >{cantidad[producto.id] || 0}</p>
-        <button onClick={()=>handleQuantityChange(producto.id,1)}>+</button>
+        <button  onClick={()=>handleQuantityChange(producto,-1)}>-</button>
+    <p onChange={(e)=>setCantidadPT(e.target.value)}>{cantidad[producto.id] || 0}</p>
+        <button  onClick={()=>handleQuantityChange(producto,1)}>+</button>
     </div>
     
-   
       
   </div>
 </div>
