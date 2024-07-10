@@ -37,10 +37,24 @@ import { deleteMethod,getByCategory ,put  } from "../hook/useFecht";
  
   
 function setCarrito(obj) {
-  const updatedCarro = [...carro, obj.id];
-  setCarro(updatedCarro); 
-  localStorage.setItem('items', JSON.stringify(updatedCarro)); 
-  console.log('CARRO', updatedCarro); 
+
+  let flag = false;
+
+  for (let e of carro) {
+    if (obj.id === e) {
+      alert('Objeto ya existe');
+      flag = true;
+      break;
+    }
+  }
+
+  if (!flag) {
+    const updatedCarro = [...carro, obj.id];
+    setCarro(updatedCarro); 
+    localStorage.setItem('items', JSON.stringify(updatedCarro)); 
+    console.log('CARRO', updatedCarro); 
+  }
+
 } 
 
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +9,7 @@ const Navbar=({confite,limpieza,comida,casa,busqueda})=>{
   const [palabra,setPalabra]=useState('')
   function cerrarsesion() {
     sessionStorage.removeItem('iniciada');
+    localStorage.removeItem('items');
     navigate('/')
   }
 
