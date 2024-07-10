@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';//icono del carrito
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useState } from 'react'; //use State para cada uno de los estados
 import { useNavigate } from 'react-router-dom';//navegacion entre rutas
 
@@ -8,7 +9,7 @@ import { useNavigate } from 'react-router-dom';//navegacion entre rutas
 //Este componentente mueve el navbar es que principalmente maneja los movimientos entre rutas y filtros
 
 
-const Navbar=({confite,limpieza,comida,casa,busqueda})=>{//los props solicitados son para crear los filtros
+const Navbar=({confite,limpieza,comida,casa,busqueda,cambioNot})=>{//los props solicitados son para crear los filtros
   
   let Iniciado = sessionStorage.getItem("iniciada")//se utiliza para consultar la session actual  previamente guardada en el sessionStorage
   let inicia =JSON.parse(Iniciado)//se tiene que 'traducir' 
@@ -105,6 +106,7 @@ const Navbar=({confite,limpieza,comida,casa,busqueda})=>{//los props solicitados
             </a>
           </li> */}
         </ul>
+        {inicia[1]?<NotificationsIcon onClick={cambioNot} />:<></>}
         <form className="d-flex" role="search">
           <input
             className="form-control me-2"

@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
-import { get } from "../hook/useFecht"//se trae consulta fetch
+import { get, post } from "../hook/useFecht"//se trae consulta fetch
 
 import CloseIcon from '@mui/icons-material/Close';// se importa iconos
+import { showToast } from "../hook/alertas";
 
-const arregloEliminar = JSON.parse(localStorage.getItem("items"))//se consulta al local storage
+
 
 //Este Componente esta creado para la visualizacion de los id guardados en localStorages hacerla consulta al get
 //y traer todos los datos, mas la cantidad que quiere el cliente
 
 
 const ProductoCarrito = ()=>{
+    let Sesion = JSON.parse(sessionStorage.getItem('iniciada')) ;
     const [carro, setCarro] = useState(JSON.parse(localStorage.getItem("items")) || []);//se guarda el local storage en una variable
     const [cantidad,setCantidad]=useState({})//una de laz variables globales para jugar con las cantidades
     const [productosCarritos,setProductosCarritos]=useState([])//se guardan productos recorridos del get compaarados por ID
     const [arrayPedidos, setArrayPedidos]=useState([]);//El plan es guardar un array de arrays para guardar item y cantidad y enviarlos al API
-    const [arregloTemporal, setArregloTemporal]=useState([]);//los pequeños arrays que van dentro de array pedidos incluyen [cantidad,item]
     const [cantidadPT,setCantidadPT]=useState(0)//variable para limpiar
 useEffect(()=>{
     getCarrito()//get para estar actualizando
@@ -68,14 +69,23 @@ const handleQuantityChange = (product, change) => { //cambio de cantidad individ
       .reduce((total, precio) => total + precio, 0);//se suman las multiplicaciones anteriores
   };
 
-  const crearPedido=()=>{
-      let nuevoArreglo=arrayPedidos;
-      
-     productosCarritos.map(producto =>(setArregloTemporal((cantidad[producto.id] || 0),producto.nombre) ), nuevoArreglo.push(arregloTemporal))
-    setArrayPedidos(nuevoArreglo)
+  const crearPedido = () => {
+    const nuevoArreglo = productosCarritos.map(producto => [
+        cantidad[producto.id] || 0,
+        producto.nombre
+    ]);
+    setArrayPedidos(nuevoArreglo);
+    let obj={
+        "usuario": Sesion[2],
+        "articulos": nuevoArreglo
+       
+    }
 
-    console.log(arrayPedidos);
-}
+    post('http://localhost:3001/pedidos', obj)
+
+    showToast("Tu pedido estará esperando por ti en la tienda", 'success');
+    console.log(nuevoArreglo);
+};
 
 
     return(
