@@ -1,11 +1,18 @@
 import { useState } from "react";
 import Navbar from "../Componentes/Navbar";
 import Producto from "../Componentes/Producto";
+import ModalPedidos from "../Componentes/ModalPedidos";
 
 const Home =()=>{
 
 
+const [notificaciones,setNotificaciones]=useState(false)
     const [categoria,setCategoria]=useState('')
+
+    function showNotifications() {
+        setNotificaciones(!notificaciones)
+        console.log('funciona boton');
+    }
 function confites() {
     setCategoria('?Categorias=confites')
 }
@@ -27,7 +34,8 @@ function busqueda(palabra) {
 
     return(
         <>
-        <Navbar comida={comida} limpieza={limpieza} confite={confites} casa={casa} busqueda={busqueda}/>
+        <Navbar comida={comida} limpieza={limpieza} confite={confites} casa={casa} busqueda={busqueda} cambioNot={showNotifications}/>
+        {notificaciones? <ModalPedidos/>:<></>}
         <Producto categoria={categoria}/>
         </>
         

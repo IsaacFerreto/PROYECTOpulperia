@@ -4,6 +4,7 @@ import { get } from "../hook/useFecht";
 import { validateUser } from "../hook/validateUser";
 import Titulo from "../Componentes/Titulo";
 import { useNavigate } from "react-router-dom";
+import { showToast } from "../hook/alertas";
 
 
 const Ingreso =({pageState})=>{
@@ -48,7 +49,8 @@ const Ingreso =({pageState})=>{
             if(validateUser(usuarios,nombre,contrasena)){
                navigate("/home")
             }else{
-                alert("NO ENTRA")
+                showToast('Contraseña o usuario equivocado, intentalo de nuevo','error')
+               
             }
         }}>Ingresa</button>
         <a onClick={pageState}>No tienes cuenta?</a>

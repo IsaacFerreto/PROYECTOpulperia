@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from '@mui/icons-material/Close'; //traemos el icono de la x
 const Lista =({listaDeProducto})=>{
 
 
     return(<>
-    <div className='cuadricula'>
+    <div className='cuadricula'> 
     {listaDeProducto.map((producto,index) => (
 <div className="card" key={producto.id}>
 <CloseIcon className="point"/>

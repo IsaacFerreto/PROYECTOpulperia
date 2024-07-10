@@ -184,3 +184,30 @@ h1 {
 width: 20px;
 height: 20px;
 }
+.contModal{
+  background-color: #FFFFFF;
+  display: flex;
+  width:400px;
+  height:170px ;
+  flex-direction: column;
+margin:10% 40% 25% 35%;
+align-items: center;
+justify-content: center;
+  position: absolute;
+  z-index: 100000;
+  border: 2px solid grey;
+}
+.contModal button{
+  border: none;
+  width:75px ;
+  height:30px ;
+  margin-left:10px ;
+}
+.contModal button:hover{
+  border:2px solid #2C3E50;
+box-shadow: #34403A;
+}
+.contModal:hover{
+  
+  box-shadow: 5px 5px 5px rgb(67, 63, 63);
+} 
