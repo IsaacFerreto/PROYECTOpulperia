@@ -2,6 +2,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const showToast = (message, type) => {
+    console.log('llego al toast');
     const options = {
         position: "top-right",
         autoClose: 5000,
@@ -18,6 +19,7 @@ const showToast = (message, type) => {
             break;
         case 'error':
             toast.error(message, options);
+            console.log('llego a error');
             break;
         case 'info':
             toast.info(message, options);

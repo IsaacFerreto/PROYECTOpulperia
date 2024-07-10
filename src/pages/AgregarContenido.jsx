@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { post } from "../hook/useFecht";
 import Navbar from "../Componentes/Navbar";
+import { validarNumeros, validarVacios } from "../hook/validateUser";
+import { showToast } from "../hook/alertas";
 
 const AgregarContenido=()=>{
     const url="http://localhost:3001/products"
@@ -24,6 +26,28 @@ const AgregarContenido=()=>{
           setBase64(reader.result);
         };
       };
+
+function validacionExtra() {
+  event.preventDefault()
+  console.log('llego aca');
+  if (validarVacios(nombre,cantidad,precio,base64)) {
+    console.log('primer if ',validarVacios(nombre,cantidad,precio,base64));
+    if (validarNumeros(cantidad,precio)) {
+      enviarObjeto()
+      console.log('paso los filtro');
+    }else{
+      console.log('llego aqui');
+      showToast('Porfavor, ingrese datos validos','error')
+      
+    }
+    
+  }else{
+    console.log('llego aqui');
+    showToast('Porfavor, ingrese infgormacion solicitada','error')
+  }
+  
+  
+}
 
 function enviarObjeto() {
 
@@ -76,7 +100,7 @@ post(url,producto)
         <label htmlFor="cantidad">cantidad</label>
         <input type="number" id="cantidad" onChange={(e)=>setCantidad(e.target.value)}/>
         </div>
-        <button type="submit" onClick={enviarObjeto}>Subir</button>
+        <button type="submit" onClick={validacionExtra}>Subir</button>
     </form>
     </div>
     </div>

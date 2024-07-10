@@ -55,7 +55,7 @@ if (validateEmail(correo)) {
 
     const usuario= verificacion();
 post(url,usuario)
-showToast('usuario creado, sera redirigido a pagina de inicio','error')
+showToast('usuario creado, será redirigido a pagina de inicio','error')
 
 setTimeout(() => {
     pageState()

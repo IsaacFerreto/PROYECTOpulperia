@@ -11,13 +11,26 @@ let Sesion = JSON.parse(sessionStorage.getItem('iniciada')) ;
         return false 
     }
 }
-
+const validarNumeros=(precio,cantidad)=>{
+    if ( isNaN(precio)||isNaN(cantidad)) {
+        return false
+    }else{
+        return true
+    }
+}
+const validarVacios=(nombre,precio,archivo,cantidad)=>{
+    if (nombre.trim()===''||precio.trim()===''||archivo.trim()===''||cantidad.trim()==='') {
+        return false
+    }else{
+        return true
+    }
+}
 const validateName=(usuarios,nombre)=>{
     return usuarios.find((user)=>nombre === user.nombre)
 }
 
 const validateEmpty=(nombre,correo,contrasena)=>{
-if (!nombre||!correo||!contrasena) {
+if (nombre.trim()===''||correo.trim()===''||contrasena.trim()==='') {
     return false
 } else {
     return true
@@ -44,4 +57,4 @@ function validatePassword(contrasena) {
     }else{ return true}
 }
 
-export {validateUser,validateName,validateEmpty,validateEmail,validatePassword}
+export {validateUser,validateName,validateEmpty,validateEmail,validatePassword,validarVacios,validarNumeros}

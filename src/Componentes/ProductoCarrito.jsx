@@ -11,8 +11,6 @@ const ProductoCarrito = ()=>{
     const [productosCarritos,setProductosCarritos]=useState([])
     const [arrayPedidos, setArrayPedidos]=useState([]);
     const [arregloTemporal, setArregloTemporal]=useState([]);
-    const [precioP,setPrecioP]=useState(0)
-    const [precioPT,setPrecioPT]=useState(0)
     const [cantidadPT,setCantidadPT]=useState(0)
 useEffect(()=>{
     getCarrito()
