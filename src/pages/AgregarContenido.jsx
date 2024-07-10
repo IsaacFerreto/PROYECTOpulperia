@@ -27,26 +27,19 @@ const AgregarContenido=()=>{
         };
       };
 
-function validacionExtra() {
-  event.preventDefault()
-  
-  if (validarVacios(nombre,cantidad,precio,base64)) {
-   
-    if (validarNumeros(cantidad,precio)) {
-      enviarObjeto()
-      showToast('Objeto agregado','success')
-   
-    }else{
-     
-      showToast('Porfavor, ingrese datos validos','error')
-      
-    }
-    
-  }else{
-   
-    showToast('Porfavor, ingrese infgormacion solicitada','error')
+const validacionExtra=(event)=> {
+  event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+        
+  if (validarVacios(nombre, cantidad, precio, base64)) {
+      if (validarNumeros(cantidad, precio)) {
+          enviarObjeto();
+          showToast('Objeto agregado', 'success');
+      } else {
+          showToast('Por favor, ingrese datos válidos', 'error');
+      }
+  } else {
+      showToast('Por favor, complete toda la información requerida', 'error');
   }
-  
   
 }
 

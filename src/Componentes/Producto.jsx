@@ -37,27 +37,24 @@ import { showToast } from "../hook/alertas";// importacion para alertas
   }
  
   
-function setCarrito(obj) {//esta duncion fue hecha para guardar los datos en el carrito en este caso utilizamos referencia localStorage
-
-  let flag = false;//esta variable es inicializada para verificar si los datos ya fueron agregados
-
-  for (let e of carro) {//en este for se hace un recorrido de la lista carro donde e va a ser la referencia de cada elemento
-    if (obj.id === e) {//si el id de el objeto coincide con alguno de la lista se manda una alerta y se cierra el ciclo
-      showToast('El objeto ya fue agregado al carrito','info')
-      flag = true;//cuando coincide se cambia la bandera a verdadero para que no pueda ingresar al localStorage
-      break;//cierra ciclo
+  function setCarrito(obj) {
+    let flag = false;
+  
+    for (let e of carro) {
+      if (obj.id === e) {
+        showToast('El objeto ya fue agregado al carrito', 'info');
+        flag = true;
+        break;
+      }
+    }
+  
+    if (!flag) {
+      const updatedCarro = [...carro, obj.id];
+      setCarro(updatedCarro);
+      localStorage.setItem('items', JSON.stringify(updatedCarro));
+      showToast('El objeto exitosamente agregado al carrito', 'success');
     }
   }
-
-  if (!flag) {//se verifica si la bandera es verdadera o falsa
-    const updatedCarro = [...carro, obj.id];//se introducen los datos nuevos a una lista 'temporal' en la que se ingresan al mismo tiempo los item viejos
-    setCarro(updatedCarro); //se guarda lista en lista global para referencias
-    localStorage.setItem('items', JSON.stringify(updatedCarro)); //se sube la lista a localStorage de nuevo
-    showToast('El objeto exitosamente agregado al carrito','success')//se le deja saber al usuario que todo salio bien
-  
-  }
-
-} 
 
 
     function cambiarEstado() {//funcion para jugar con estado de modal
@@ -66,10 +63,18 @@ function setCarrito(obj) {//esta duncion fue hecha para guardar los datos en el 
     }
     
     function permitirEliminar() {//funcion para eliminar luego de darle si al modal
-      
-      deleteMethod('products/',id)//se llama fetch para eliminar
-      getUsuario()// se llama get para reiniciar informacion
-  cambiarEstado()//se cierra modal
+      deleteMethod('products/', id) // Eliminar el producto
+      .then(() => {
+        // Actualizar el estado de productos excluyendo el producto eliminado
+        const updatedProductos = productos.filter(producto => producto.id !== id);
+        setProductos(updatedProductos);
+        showToast('Producto eliminado exitosamente', 'success');
+        cambiarEstado(); // Cerrar el modal
+      })
+      .catch(error => {
+        console.error('Error al eliminar el producto:', error);
+        showToast('Hubo un error al eliminar el producto', 'error');
+      });
 }
 
  function eliminarObjeto(producto) {// funcion para abrir modal

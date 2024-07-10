@@ -19,7 +19,7 @@ const validarNumeros=(precio,cantidad)=>{//se verifica si solo llegan numeros en
     }
 }
 const validarVacios=(nombre,precio,archivo,cantidad)=>{//verifica si en registro llegan los campos vacios
-    if (nombre.trim()===''||precio.trim()===''||archivo.trim()===''||cantidad.trim()==='') {
+    if (!nombre||!precio||!archivo||!cantidad||nombre.trim()===''||precio.trim()===''||archivo.trim()===''||cantidad.trim()==='') {
         return false
     }else{
         return true
