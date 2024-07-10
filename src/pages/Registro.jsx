@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { post, get } from "../hook/useFecht";
 import { validateName,validateEmpty,validateEmail,validatePassword } from "../hook/validateUser";
 import Titulo from "../Componentes/Titulo";
+import { showToast } from "../hook/alertas";
 const Registro=( {pageState})=>{
 
     const [movTitulo,setMovTitulo]=useState("")   
@@ -29,7 +30,7 @@ const [verfContrasena,setVerfContrasena]=useState('');
 
 function verificacion() {
     //funcion para verificar que las contraseñas coinciden
-if (contrasena===verfContrasena) {
+
     //creacion objeto usuario
     let user={
     nombre:nombre,
@@ -37,10 +38,7 @@ if (contrasena===verfContrasena) {
     contrasena:contrasena
     }
     return user
-}else{
-    //cambiar por SWEETALERT
-    alert('No coinciden')
-}
+
 
 }
 
@@ -51,32 +49,39 @@ if (!validateName(usuarios,nombre)) {
 if (validateEmail(correo)) {
     if (validatePassword(contrasena)) {
         
-   
+        if (contrasena===verfContrasena) {
     
 
 
     const usuario= verificacion();
 post(url,usuario)
+showToast('usuario creado, sera redirigido a pagina de inicio','error')
 
-alert('usuario creado, sera redirigido a pagina de inicio')
 setTimeout(() => {
     pageState()
     
 }, 1000);
 }else{
-    console.log('asdf');
+    showToast('Contraseñas no coinciden','error')
+   
 }
 }else{
-    alert('no funca')
+    showToast('La contraseña debe tener al menos 8 caracteres','error')
+    
+}
+}else{
+    showToast('Porfavor, ingrese un correo valido','error')
+    
 }
 
 } else{
-    alert('Usuario Existe')
+    showToast('Este nombre de usuario ya ha sido usado, intenta con otro','error')
+   
 }
 
 
 }else{
-    alert('LLENE CAMPOS')
+    showToast('Porfavor, Ingrese todos los datos solicitados','error')
 }
 
     

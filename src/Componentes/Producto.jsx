@@ -4,6 +4,7 @@ import { useState } from "react";
 import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
 import { deleteMethod,getByCategory ,put  } from "../hook/useFecht";
+import { showToast } from "../hook/alertas";
 
 
 
@@ -42,7 +43,7 @@ function setCarrito(obj) {
 
   for (let e of carro) {
     if (obj.id === e) {
-      alert('Objeto ya existe');
+      showToast('El objeto ya fue agregado al carrito','info')
       flag = true;
       break;
     }
