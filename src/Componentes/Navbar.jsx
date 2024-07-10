@@ -1,26 +1,31 @@
 /* eslint-disable react/prop-types */
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-const Navbar=({confite,limpieza,comida,casa,busqueda})=>{
-  let Iniciado = sessionStorage.getItem("iniciada")
-  let inicia =JSON.parse(Iniciado)
-  const navigate=useNavigate()
-  const [palabra,setPalabra]=useState('')
-  function cerrarsesion() {
-    sessionStorage.removeItem('iniciada');
-    localStorage.removeItem('items');
-    navigate('/')
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';//icono del carrito
+import { useState } from 'react'; //use State para cada uno de los estados
+import { useNavigate } from 'react-router-dom';//navegacion entre rutas
+
+
+
+//Este componentente mueve el navbar es que principalmente maneja los movimientos entre rutas y filtros
+
+
+const Navbar=({confite,limpieza,comida,casa,busqueda})=>{//los props solicitados son para crear los filtros
+  
+  let Iniciado = sessionStorage.getItem("iniciada")//se utiliza para consultar la session actual  previamente guardada en el sessionStorage
+  let inicia =JSON.parse(Iniciado)//se tiene que 'traducir' 
+  const navigate=useNavigate()//declaracion para utilizar navigate
+  const [palabra,setPalabra]=useState('')//estado utilizado para la busqueda
+
+  function cerrarsesion() {//funcion para cerrar sesion
+    sessionStorage.removeItem('iniciada');//eliminamos la session del sessions storage
+    localStorage.removeItem('items');//en caso de que el usuario tenga carrito hecho lo limpiamos por si alguien ingresa en la misma pc
+    navigate('/')//se envia al usuario al login
   }
 
   function moveAndChange() {
-    navigate('/home')
-    casa()
+    navigate('/home')//se utiliza para enviar al usuario a donde pueda ver los productos
+    casa()//funcion casa limpia los filtros casa como traduccion de home
     
   }
-  console.log(inicia[1]);
-
-    
     return(
     <>
     <nav className="navbar navbar-expand-lg bg-body-tertiary">

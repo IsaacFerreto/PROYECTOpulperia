@@ -29,20 +29,21 @@ const AgregarContenido=()=>{
 
 function validacionExtra() {
   event.preventDefault()
-  console.log('llego aca');
+  
   if (validarVacios(nombre,cantidad,precio,base64)) {
-    console.log('primer if ',validarVacios(nombre,cantidad,precio,base64));
+   
     if (validarNumeros(cantidad,precio)) {
       enviarObjeto()
-      console.log('paso los filtro');
+      showToast('Objeto agregado','success')
+   
     }else{
-      console.log('llego aqui');
+     
       showToast('Porfavor, ingrese datos validos','error')
       
     }
     
   }else{
-    console.log('llego aqui');
+   
     showToast('Porfavor, ingrese infgormacion solicitada','error')
   }
   

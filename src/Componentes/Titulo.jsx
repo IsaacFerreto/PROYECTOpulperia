@@ -1,4 +1,4 @@
-const Titulo =({titulo,classT})=>{
+const Titulo =({titulo,classT})=>{//componente para manjar titulo aparte
     return(
         <><h1 className={classT}>{titulo}</h1></>
     )
